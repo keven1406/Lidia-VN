@@ -1,0 +1,124 @@
+@charset "UTF-8";
+/*  - - Menu inicial, corpo e fundo do game - - */
+body {
+	background-color: #828282;
+}
+button {
+	border-radius: 10px;
+}
+#corpo {
+	width: 1100px;
+	margin: auto;
+	margin-top: 10px;
+    height:620px;
+	box-shadow: 0px 0px 5px black;
+	background-color: #606060;
+	padding: 5px;
+	position: relative;
+}
+#jogando {
+    display: none;
+}
+#botao-iniciar {
+    position: absolute;
+    top: 400px;
+    right: 200px;
+    box-shadow:1px 3px 10px black;
+}
+#continuar {
+    position: absolute;
+    top:450px;
+    right: 200px;
+    box-shadow: 1px 3px 10px black;
+}
+#menu {
+    display: block;
+    height: 200px;
+}
+#fundo-jogo {
+	width:1100px;
+	margin: 0px;
+}
+#fundo-menu {
+	width:1100px;
+	margin: 0px;
+}
+#titulo-do-menu {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    font-size: 40pt;
+    color: dodgerblue;
+    text-shadow: 2px 2px 5px black;
+}
+/* - - Caixa de textos - - */
+#caixa-de-textos {
+	background-color: rgba(0,0,0,.9);	
+	border: 5px solid red;
+	padding: 10px;
+	top: 465px;
+	width:800px;
+	height: 100px;
+	position: absolute;
+	right:130px;
+}
+#caixa-de-textos p {
+	color: white;
+	font-family: Arial, sans-serif;
+	font-size: 15pt;
+	margin: 5px;
+}
+#botao-avancar {
+	position:absolute;
+	border-radius: 10px;
+	top: 90px;
+	right: 10px;
+}
+#botao-voltar {
+	position: absolute;
+	top: 90px;
+	border-radius: 10px;
+	right: 90px;
+}
+/* - - Painel de salve - - - */
+#salvar {
+    width: 100px;
+    position: absolute;
+    top: 5px;
+    left: 110px;
+}
+#sair {
+    width: 100px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+/* - - Posição dos personagens - - */
+#esquerda {
+ 	position:absolute;
+	left: 100px;
+	top:155px;   
+}
+#centro {
+	position:absolute;
+	right: 435px;
+	top:155px;
+}
+#direita {
+	position:absolute;
+	right: 100px;
+	top:155px;
+}
+/* - - Posição das expreções - - - */
+#emocao-esquerda {
+	position: absolute;
+
+}
+#emocao-centro {
+	position: absolute;
+
+}
+#emocao-direita {
+	position: absolute;
+
+}
