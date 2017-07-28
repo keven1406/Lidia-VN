@@ -68,7 +68,7 @@ Ela não está completa.*/
             mostrarEmocao(retorno, retorno.emocao, posicoes, atual, nomeDaPosicao, retorno.posicaoDaEmocao);
     }
 
-/* - - - A função trocaAtores observa se contem no objeto falando atores ou emoção - - -*/
+/* - - - A função trocaAtores observa se contem no objeto "falando" atores ou emoção - - -*/
     
     function trocaAtores(falando) {
         var posicoes = ["esquerda", "centro", "direita"], atual = 0;
