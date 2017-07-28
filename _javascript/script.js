@@ -25,7 +25,8 @@
     }
 
 // - - - Bloco para mostrar personagens e emoções na tela. - - -
-
+/* A function a baixo tem o objetivo de processar o alinhamento da expressão facial ao mesmo tempo que o alinhamento do corpo do personagem
+Ela não está completa.*/
     function posicoesEmocao(posicoes, atual, local, tipoDoRetorno, slot, tipoDaCondicao, posicaoDaEmocao) {
         if (posicaoDaEmocao != undefined)
             tipoDoRetorno = posicaoDaEmocao;  /* Falta corrigir e incrimentar isso aqui. Espero que eu consiga atender.*/
