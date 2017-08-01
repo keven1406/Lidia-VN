@@ -1,4 +1,4 @@
- /* - - - funcção referente ao carregamento do jogo. Ela 
+ /* - - - função referente ao carregamento do jogo. Ela 
  impede que o jogo inicie antes do computador processar todo o código - - - */
     function fimDoCarregamento() {
         document.getElementById("carregamento").style.display = "none";
