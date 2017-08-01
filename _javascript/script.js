@@ -1,4 +1,4 @@
- /* - - - função referente ao carregamento do jogo. Ela 
+ /* - - - funcção referente ao carregamento do jogo. Ela 
  impede que o jogo inicie antes do computador processar todo o código - - - */
     function fimDoCarregamento() {
         document.getElementById("carregamento").style.display = "none";
@@ -24,17 +24,27 @@
         }
     }
 
-// - - - Bloco para mostrar personagens e emoções na tela. - - -
-/* A function a baixo tem o objetivo de processar o alinhamento da expressão facial ao mesmo tempo que o alinhamento do corpo do personagem
-Ela não está completa.*/
+/*Bloco para mostrar personagens e emoções na tela em suas devidas posições. Essas quatro funções irão
+servir para:
+-Saber se o que vai ser tratado é uma emoção ou um personagem (function trocaAtores);
+-Se não houver emoção ou atores no objeto, ele irá retornar ao objeto que contenha para que
+ o usuario possa navegar pelosbotão voltar e avançar, mostrar emoção (function reotnador);
+-Mostrar na tela a emoção ou o personagem (function mostrarEmocao);
+-Dizer em que posição o personagem ou a emoção irá aparecer.
+OBS: Ainda não foi implementada a propriedade para posicionar os personagens. Até agora temos apenas
+o posicionamento das emoções. Porem, achei util deixar a função já preparada para ambas, assim impredindo
+repetição de texto.*/
+
     function posicoesEmocao(posicoes, atual, local, tipoDoRetorno, slot, tipoDaCondicao, posicaoDaEmocao) {
-        if (posicaoDaEmocao != undefined)
-            tipoDoRetorno = posicaoDaEmocao;  /* Falta corrigir e incrimentar isso aqui. Espero que eu consiga atender.*/
-        for (var emocaoAtual = local; emocaoAtual < tipoDoRetorno.length; emocaoAtual++) {
-            if ((emocaoAtual % 2 == 0) && (emocaoAtual != "")) //Se emocao atual der resto 0, o valor será redirecionado para a posição top, se 1 será para left.
-                document.getElementById(slot + posicoes[atual]).style.top = tipoDaCondicao[emocaoAtual];
+        if (posicaoDaEmocao != undefined) {
+            tipoDoRetorno = posicaoDaEmocao;
+        }
+        for (var emocaoAtual = local; emocaoAtual < tipoDoRetorno.length - 1; emocaoAtual++) {
+            //Se emocao atual der resto 0, o valor será redirecionado para a posição top, se 1 será para left.
+            if (emocaoAtual % 2 == 0)
+                document.getElementById(slot + posicoes[atual]).style.top = tipoDoRetorno[emocaoAtual];
             else {
-                document.getElementById(slot + posicoes[atual]).style.left = tipoDaCondicao[emocaoAtual];
+                document.getElementById(slot + posicoes[atual]).style.left = tipoDoRetorno[emocaoAtual];
                 break
             }
         }
@@ -67,8 +77,6 @@ Ela não está completa.*/
         else
             mostrarEmocao(retorno, retorno.emocao, posicoes, atual, nomeDaPosicao, retorno.posicaoDaEmocao);
     }
-
-/* - - - A função trocaAtores observa se contem no objeto "falando" atores ou emoção - - -*/
     
     function trocaAtores(falando) {
         var posicoes = ["esquerda", "centro", "direita"], atual = 0;
@@ -145,7 +153,7 @@ o texto já editado para fazer com que a passaTexto o imprima na tela - - - - */
 		trocaAtores(falando);
 	}
 
-/* - - - Aqui é onde salvamos o prograsso da nossa visual novel. Jánafunction continuar(),
+/* - - - Aqui é onde salvamos o prograsso da nossa visual novel. Já na function continuar(),
 pegamos o valor salvo e trazemos novamente pro jogo., fazendo com que o jogo volte para a
 parte onde o usuario salvou - - - */
 
