@@ -19,5 +19,5 @@ Primeira imagem – esquerda;
 Segunda imagem – centro;
 Terceira imagem – direita.
 
-É aqui que poderemos adcionar mais personagens a cena.
+É aqui que podemos adicionar mais personagens a cena.
 cenario: “patio.jpg”	O cenario, como o nome da propriedade já diz, serve para escolher o cenario atual da cena. Basta digitar o nome da imagem junto com sua extenção. Quando chegar o momento, o cenario irá mudar para o selecionado.
