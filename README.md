@@ -1,5 +1,11 @@
 # Lidia-VN
-Lídia engine é uma biblioteca focada na criação de Visual novels. Contamos com POO para produzir uma VN. A baixo vemos uma lista com todos os comandos da Lídia Engine.
+Lídia engine é uma biblioteca focada na criação de Visual novels. Contamos com POO para produzir uma VN. 
+
+Como usar
+
+A ideia é facilitar a vida do autor fazendo com que ele apenas digite as propriedades no objeto que representa a fala do personagem. No Objeto que está a referida fala, o autor poderá digitar a propriedade referente aos eventos que ele quer que ocorra. Apenas digitando o nome da propriedade e seus atributos, o autor poderá criar toda a sua história baseado nos eventos que cada fala terá sem precisar alterar ou criar código.
+
+A baixo vemos uma lista com todos os comandos da Lídia Engine.
 
 Propriedades: 
 
