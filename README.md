@@ -1,13 +1,13 @@
 # Lidia-VN
 Lídia engine é uma biblioteca focada na criação de Visual novels. Contamos com POO para produzir uma VN. 
 
-Como usar
+<h2>Como usar</h2>
 
-A ideia é facilitar a vida do autor fazendo com que ele apenas digite as propriedades no objeto que representa a fala do personagem. No Objeto que está a referida fala, o autor poderá digitar a propriedade referente aos eventos que ele quer que ocorra. Apenas digitando o nome da propriedade e seus atributos, o autor poderá criar toda a sua história baseado nos eventos que cada fala terá sem precisar alterar ou criar código.
+   A ideia é facilitar a vida do autor fazendo com que ele apenas digite as propriedades no objeto que representa a fala do personagem. No Objeto que está a referida fala, o autor poderá digitar a propriedade referente aos eventos que ele quer que ocorra. Apenas digitando o nome da propriedade e seus atributos, o autor poderá criar toda a sua história baseado nos eventos que cada fala terá sem precisar alterar ou criar código.
 
 A baixo vemos uma lista com todos os comandos da Lídia Engine.
 
-Propriedades: 
+<h2>Propriedades:</h2> 
 
 fala: “Olá, eu sou lídia”	- Responsável pelas falas do personagem. Quando quiser que seu personagem fale alguma coisa, basta colocar a fala dentro das aspas (“”). Como no exemplo a seguir: fala: “Oi”.
 
