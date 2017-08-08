@@ -7,7 +7,7 @@ Lídia engine é uma biblioteca focada na criação de Visual novels. Contamos c
 
 A baixo vemos uma lista com todos os comandos da Lídia Engine.
 
-<h2>Propriedades:</h2> 
+<h2>Propriedades</h2> 
 
 fala: “Olá, eu sou lídia”	- Responsável pelas falas do personagem. Quando quiser que seu personagem fale alguma coisa, basta colocar a fala dentro das aspas (“”). Como no exemplo a seguir: fala: “Oi”.
 
