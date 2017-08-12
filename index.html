@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang = "pt-br">
-	<head>
-		<title>Calculator Prova dos 9</title>
-		<meta charset = "UTF-8"/>
-		<meta name = "viewport" content = "width=device-width"/>
-		<link rel = "stylesheet" href = "_css/style.css"/>
-	</head>
-	<body>
-		<div id = "calculator">
-			<header>
-				<h1>Calculator</h1>
-			</header>
-			<section id = "screen">
-				<p id="value">0</p>
-			</section>
-			<section id = "keyboard">
-				<div class = "order-button">
-					<input type = "button" id = "seven" value = "7" onclick = "calculateNumber(7)"/>
-					<input type = "button" id = "eight" value = "8" onclick = "calculateNumber(8)"/>
-					<input type = "button" id = "nine" value = "9" onclick = "calculateNumber(9)"/>
-					<input type = "button" id = "times" value = "X" onclick = "timesSign()"/>
-				</div>
-				<div class = "order-button">
-					<input type = "button" id = "four" value = "4"/>
-					<input type = "button" id = "five" value = "5"/>
-					<input type = "button" id = "six" value = "6"/>
-					<input type = "button" id = "minus" value = "-"/>
-				</div>
-				<div class = "order-button">
-					<input type = "button" class = "button" id = "one" value = "1"/>
-					<input type = "button" id = "two" value = "2"/>
-					<input type = "button" id = "three" value = "3"/>
-					<input type = "button" id = "plus" value = "+"/>
-				</div>
-				<div class = "order-button">
-					<input type = "button" id = "ten" value = "0"/>
-					<input type = "button" id = "point" value = "."/>
-					<input type = "button" id = "equal" value = "=" onclick = "result()"/>
-				</div>
-			</section>
-		</div>
-		<script src = "_javascript/script.js"></script>
-	</body>
+<!-- Aplicativo desenvolvido por ELias Keven Pereira da Silva.
+ Data de inicio do projeto: 11/04/2017.
+ Aplicativo com licença Open Source. Você estará livre para compartilhar, utilizar e modificar o App livremente. -->
+    <head>
+        <meta charset = "UTF-8"/>
+        <title>Lídia Engine - Desenvolvimento de Visual Novels</title>
+        <link rel = "stylesheet" href = "_css/reset.css"/>
+        <link rel = "stylesheet" href = "_css/estilo.css"/>
+    </head>
+
+    <body>
+
+        <div id = "corpo">
+    <!-- - - - - - - Aqui é o Menu inicial do jogo - - - - - - - - - - -->
+            <section id = "menu">
+                <img src = "_imagens/_background/menu-foto.jpg" id = "fundo-menu" alt= "foto do menu"/>
+                <h1 id = "titulo-do-menu">Lídia Engine</h1>
+                <button id = "continuar" onclick = "continuar()">Continuar</button>
+                <button id = "botao-iniciar" onclick = "iniciarOuVoltar(true)">Iniciar</button>
+            </section>
+    <!-- - - - - - - Aqui é a parte onde o jogo inicia - - - - - - - - -->
+            <section id = "jogando">
+                <img src = "" id = "fundo-jogo"/>
+                <img src = "" id = "esquerda"/>
+                <img src = "" id = "emocao-esquerda"/>
+                <img src = "" id = "centro"/>
+                <img src = "" id = "emocao-centro"/>
+                <img src = "" id = "direita"/>
+                <img src = "" id = "emocao-direita"/>
+                <section>
+                    <div id = "caixa-de-textos">
+                        <p id = "falas">Precione proximo para começar</p>
+                        <button onclick = "trocaDeFalas(1)" id = "botao-avancar">Avançar</button>
+                        <button onclick = "trocaDeFalas(0)" id = "botao-voltar">Voltar</button>
+                    </div>
+                </section>
+    <!-- - - - - - - Menu de ferramentas contendo o botão salvar e sair - - - - - - -->
+                <div id = "menu-ferramentas">
+                    <section>
+                        <button id = "salvar" onclick = "salvar()">Salvar</button>
+                        <button id = "sair" onclick = "iniciarOuVoltar(false)">Sair</button>
+                    </section>
+                </div>	
+            </section>
+        </div>
+        <script src = "_javascript/var.js"></script>
+        <script src = "_javascript/script.js"></script>
+    </body>
 </html>
