@@ -1,5 +1,5 @@
 # Lidia-VN
-Lídia engine é uma biblioteca focada na criação de Visual novels. Contamos com POO para produzir uma VN. 
+Lídia VN é uma engine focada na criação de Visual novels. Contamos com POO para produzir uma VN. 
 
 <h2>Como usar</h2>
 
