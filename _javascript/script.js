@@ -1,6 +1,6 @@
  /* - - - função referente ao carregamento do jogo. Ela 
  impede que o jogo inicie antes do computador processar todo o código - - - */
-    function fimDoCarregamento() {
+    const fimDoCarregamento = x => {
         document.getElementById("carregamento").style.display = "none";
     }
 
@@ -8,18 +8,18 @@
  a section deixará de  ser exibida, e a outra section referente a reprodução do game,
   que antes não estava sendo exibida, será mostrada. - - -*/
 
-    function iniciarOuVoltar(iniciar) {
+    const iniciarOuVoltar = (iniciar) => {
         if (iniciar == true) {
-            trocaDeFalas(contadora);
-            document.getElementById("menu").style.display = "none";
-            document.getElementById("jogando").style.display = "block";
+            trocaDeFalas(contadora)
+            document.getElementById("menu").style.display = "none"
+            document.getElementById("jogando").style.display = "block"
         }
         else {
-            contadora = 0;
-            var confirmacao = confirm("Tem certeza que deseja sair?");
+            contadora = 0
+            const confirmacao = confirm("Tem certeza que deseja sair?")
             if (confirmacao == true) {
-                document.getElementById("jogando").style.display = "none";
-                document.getElementById("menu").style.display = "block";
+                document.getElementById("jogando").style.display = "none"
+                document.getElementById("menu").style.display = "block"
             }
         }
     }
@@ -35,11 +35,11 @@ OBS: Ainda não foi implementada a propriedade para posicionar os personagens. A
 o posicionamento das emoções. Porem, achei util deixar a função já preparada para ambas, assim impredindo
 repetição de texto.*/
 
-    function posicoesEmocao(posicoes, atual, local, tipoDoRetorno, slot, tipoDaCondicao, posicaoDaEmocao) {
+    const posicoesEmocao = (posicoes, atual, local, tipoDoRetorno, slot, tipoDaCondicao, posicaoDaEmocao) => {
         if (posicaoDaEmocao != undefined) {
             tipoDoRetorno = posicaoDaEmocao;
         }
-        for (var emocaoAtual = local; emocaoAtual < tipoDoRetorno.length - 1; emocaoAtual++) {
+        for (let emocaoAtual = local; emocaoAtual < tipoDoRetorno.length - 1; emocaoAtual++) {
             //Se emocao atual der resto 0, o valor será redirecionado para a posição top, se 1 será para left.
             if (emocaoAtual % 2 == 0)
                 document.getElementById(slot + posicoes[atual]).style.top = tipoDoRetorno[emocaoAtual];
@@ -50,8 +50,8 @@ repetição de texto.*/
         }
     }
 
-    function mostrarEmocao(retorno, tipoDaCondicao, posicoes, atual, slot, posicaoDaEmocao) { //falando, atores ou emoçoes, posicoes, atual = 0 e "".
-        var local = atual + atual; //serve para separar o array das emocoes
+    const mostrarEmocao = (retorno, tipoDaCondicao, posicoes, atual, slot, posicaoDaEmocao) => { //falando, atores ou emoçoes, posicoes, atual = 0 e "".
+        const local = atual + atual; //serve para separar o array das emocoes
         if (atual == posicoes.legnth - 1)
             return null;
         else if (tipoDaCondicao[atual] != "") { //Aqui ele vê se o tipoDaCondicao é referente a atores ou emocoes.
@@ -64,9 +64,9 @@ repetição de texto.*/
             return mostrarEmocao(retorno, tipoDaCondicao, posicoes, atual+1, slot, posicaoDaEmocao);
     }
     
-    function retornador(posicoes, tipoDeCondicao, atual, acao, nomeDaPosicao, posicaoDaEmocao) {
+    const retornador = (posicoes, tipoDeCondicao, atual, acao, nomeDaPosicao, posicaoDaEmocao) => {
         var retorno = {};
-        for (var retornando = contadora - 1; retornando >= 0; retornando--) {
+        for (let retornando = contadora - 1; retornando >= 0; retornando--) {
             if (acao in falas[retornando]) {
                 retorno = falas[retornando]; 
                 break;
@@ -78,31 +78,31 @@ repetição de texto.*/
             mostrarEmocao(retorno, retorno.emocao, posicoes, atual, nomeDaPosicao, retorno.posicaoDaEmocao);
     }
     
-    function trocaAtores(falando) {
-        var posicoes = ["esquerda", "centro", "direita"], atual = 0;
+    const trocaAtores = falando => {
+        const posicoes = ["esquerda", "centro", "direita"], atual = 0
         if ("atores" in falando)
-            mostrarEmocao(falando, falando.atores, posicoes, atual, "");
+            mostrarEmocao(falando, falando.atores, posicoes, atual, "")
         else 
-            retornador(posicoes, "", atual, "atores", "");
+            retornador(posicoes, "", atual, "atores", "")
         if ("emocao" in falando)
-           	mostrarEmocao(falando, falando.emocao, posicoes, atual, "emocao-", falando.posicaoDaEmocao);
+           	mostrarEmocao(falando, falando.emocao, posicoes, atual, "emocao-", falando.posicaoDaEmocao)
         else
-            retornador(posicoes, "", atual, "emocao", "emocao-");
+            retornador(posicoes, "", atual, "emocao", "emocao-")
     }
 
 /* - - - As funções a baixo são para a troca de cenario. - - - */
     
-    function trocaCenario() {
+    const trocaCenario = x => {
         if ("cenario" in falando)
-            document.getElementById("fundo-jogo").src = "_imagens/_background/" + falando.cenario;
+            document.getElementById("fundo-jogo").src = "_imagens/_background/" + falando.cenario
     }
 
 /* - - - Nessa função, a falado personagem é formatada acrescentando o nome do
  personagem ao inicio da fala. - - - */
 
-    function formatandoFalas(falaSelecionada) {
-            var falaFormatada = falando.personagem + " - " + falaSelecionada;
-            return falaFormatada;
+    const formatandoFalas = falaSelecionada => {
+            const falaFormatada = falando.personagem + " - " + falaSelecionada
+            return falaFormatada
         }
 
 /* - - - Aqui entra o selecionador de falas. Ele será responsável por verificar de 
@@ -110,12 +110,12 @@ qual personagem é a fala, qual ordem é a fala e que expressão o personagem de
 quando profere tal fala. Quando o resutado é encontrado, ele é armazenado na váriavel 
 global "falando", que será utilizada futuramente, por outras funções - - - */
 	
-    function selecionandoFala(contadora) {
-            for (var i = 0; i < falas.length; i++) {
+    const selecionandoFala = contadora => {
+            for (let i = 0; i < falas.length; i++) {
                 if (contadora == falas[i].numero)
-                    falando = falas[i];
+                    falando = falas[i]
             }
-            return falando.fala;
+            return falando.fala
         }
 
 /* - - - Aqui verifica se possui falas quando o usuario clica no botão "anterior" e quando 
@@ -123,44 +123,44 @@ ele clica no botão "Proximo. Também chama a funcão passaTexto(), que cria um 
 letra na tela. A função passaTexto chama a função selecionandoFala() que por sua vez, traz
 o texto já editado para fazer com que a passaTexto o imprima na tela - - - - */
 
-    function passaTexto(falasProntas) {
-        var somar = 0, letraPorLetra = "", interrompeFala = contadora;
-        function controladorDeTempo() {
+    const passaTexto = falasProntas => {
+        //Alterar essa função por que aqui tem uma var e preciso apenas deixar const
+        var somar = 0, letraPorLetra = "", interrompeFala = contadora
+        const controladorDeTempo = x => {
             if (interrompeFala != contadora) //Serve para impedir o bug "Fantasma das letras" que ocorre quando o usuário clica demasiadamente rápido. Impedindo no recursão atual o loop.
-                return "";
-            var tempo = setTimeout(function() {
+                return ""
+            const tempo = setTimeout( x => {
                 letraPorLetra += falasProntas.charAt(somar); //charAt(somar) vai pegar cada letra da string especificaa pelo contador somar. Se somar for 0 então ele pegará a primeira letra da string.
-                document.getElementById("falas").innerHTML = letraPorLetra;
-                somar++;
+                document.getElementById("falas").innerHTML = letraPorLetra
+                somar++
                 if (somar < falasProntas.length)
-                    return controladorDeTempo();
-            },30);
+                    return controladorDeTempo()
+            },30)
         }
-        controladorDeTempo();
+        controladorDeTempo()
     }
-	function trocaDeFalas(numero) {
+	const trocaDeFalas = numero => {
 		if (numero == 1)
-			contadora += numero;
+			contadora += numero
 			if (contadora > falas.length)
-				contadora = falas.length;
+				contadora = falas.length
 		else if (numero < 1) {
-			contadora = contadora - 1;
+			contadora = contadora - 1
 			if (contadora < 1)
-				contadora = 1;
+				contadora = 1
 		}
-        passaTexto(formatandoFalas(selecionandoFala(contadora)));
-        trocaCenario();
-		trocaAtores(falando);
+        passaTexto(formatandoFalas(selecionandoFala(contadora)))
+        trocaCenario()
+		trocaAtores(falando)
 	}
 
 /* - - - Aqui é onde salvamos o prograsso da nossa visual novel. Já na function continuar(),
 pegamos o valor salvo e trazemos novamente pro jogo., fazendo com que o jogo volte para a
 parte onde o usuario salvou - - - */
 
-	function salvar() {
-        localStorage.setItem("contadora", contadora);
-	}
-    function continuar(){
-        contadora = JSON.parse(localStorage.getItem("contadora"));
-        iniciarOuVoltar(true);
+	const salvar = x => localStorage.setItem("contadora", contadora)
+
+    const continuar = x => {
+        contadora = JSON.parse(localStorage.getItem("contadora"))
+        iniciarOuVoltar(true)
     }
