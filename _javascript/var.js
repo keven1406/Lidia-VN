@@ -3,7 +3,7 @@
 /* Ideia atores. Essa ideia é utilizar mais uma propriedade quem tem um array. Nesse array irão conter os personagens que estarão na cena. No caso, o maximo é 3. Mas é bom pois pode aumentar o numero, já que um array é extendível. O número do array é referente a imagem da esquerda, o 1 ao centro e o 2 a direita. Logo teremos 3 personans.*/
 	
         var contadora = 0, falando = {}, posicao = "centro";
-	var falas = [
+	const falas = [
                 {numero: 1, personagem: "Lídia", fala: "Olá, eu sou a Lídia.", emocao: ["","",""], posicaoDaEmocao: ["","","","","",""], atores:["", "sasha.png", ""], cenario: "patio.jpg"},
                 {numero: 2, personagem: "Lídia", fala: "Sou uma Biblioteca para criação de Visual Novels."},
                 {numero: 3, personagem: "Lídia", fala: "Agora vou apresentar tudo o que posso fazer pra você. Espero que goste de mim!"},
