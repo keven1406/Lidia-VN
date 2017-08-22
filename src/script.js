@@ -1,0 +1,175 @@
+   
+ /* - - - função referente ao carregamento do jogo. Ela 
+ impede que o jogo inicie antes do computador processar todo o código - - - */
+    const fimDoCarregamento = x => {
+        document.getElementById("carregamento").style.display = "none";
+    }
+
+/* - - - Aqui é referente ao menu inicial do jogo. Caso o jogador pressione iniciar,
+ a section deixará de  ser exibida, e a outra section referente a reprodução do game,
+  que antes não estava sendo exibida, será mostrada. - - -*/
+
+    const iniciarOuVoltar = (iniciar) => {
+        if (iniciar == true) {
+            trocaDeFalas(contadora)
+            document.getElementById("menu").style.display = "none"
+            document.getElementById("jogando").style.display = "block"
+        }
+        else {
+            contadora = 0
+            const confirmacao = confirm("Tem certeza que deseja sair?")
+            if (confirmacao == true) {
+                document.getElementById("jogando").style.display = "none"
+                document.getElementById("menu").style.display = "block"
+            }
+        }
+    }
+//atual e local para indireitar
+/*if (posicaoDaEmocao != undefined)tipoDoRetorno = posicaoDaEmocao*/
+
+const alinhar = (direcao, posicoes, atual, local, slot) => {
+    let alinhando = document.getElementById(slot + posicoes[atual]) 
+    for (let emocao = local; emocao < direcao.length - 1; emocao++) {
+        if (emocao % 2 == 0)
+            alinhando.style.top = direcao[emocao];
+        else {
+            alinhando.style.left = direcao[emocaol];
+            break
+        }
+    }
+}
+
+//Tentando deixar mostrar imagem pura
+
+const mostrarEmocao = (posicoes, nome, atual) => {
+    const local = atual + atual
+    let sentimento = document.getElementById("emocao-" + posicoes[atual])
+    if (atual == posicoes.length - 1)
+        return null
+    if (nome[atual] != "") {
+        alinhar(nome, posicoes, atual, local, "emocao-")
+        sentimento.src = "_imagens/" + nome[atual]
+    }
+    else
+        sentimento.src = ""
+    if (atual < posicoes.length - 1)
+        return mostrarPersonagem(posicoes, nome, atual+1)
+}
+
+const mostrarPersonagem = (posicoes, nome, atual) => {
+    const local = atual + atual
+    let personagem = document.getElementById(posicoes[atual])
+    if (atual == posicoes.length - 1)
+        return null
+    if (nome[atual] != "") {
+        alinhar(nome, posicoes, atual, local, "")
+        personagem.src = "_imagens/" + nome[atual]
+    }
+    else
+        personagem.src = ""
+    if (atual < posicoes.length - 1)
+        return mostrarPersonagem(posicoes, nome, atual+1)
+}
+
+//Retornar para onde tem o parametro "acao"    
+
+const retornador = (acao, contadora, falas) => {
+    let retorno = {}
+    for (let retornando = contadora - 1; retornando >= 0; retornando--) {
+        if (acao in falas[retornando]) {
+            retorno = falas[retornando]; 
+            break;
+        }
+    }
+    return retorno;
+}
+//Caso haja cenario na cena, essa função irá sempre retornar o cenario desejado.
+
+const trocarCenario = (falas) => {
+    if ("cenario" in falas)
+        return "_imagens/_background/" + falas.cenario
+}
+
+/*interrompeFala serve para impedir o bug "Fantasma das letras"
+ que ocorre quando o usuário clica demasiadamente rápido. */
+
+const passarTexto = falasProntas => {
+    let somar = 0, letraPorLetra = "", interrompeFala = contadora
+    const controladorDeTempo = x => {
+        if (interrompeFala != contadora)
+            return ""
+        const tempo = setTimeout( x => {
+            letraPorLetra += falasProntas.charAt(somar); 
+            document.getElementById("falas").innerHTML = letraPorLetra
+            somar++
+            if (somar < falasProntas.length)
+                return controladorDeTempo()
+        },30)
+    }
+    controladorDeTempo()
+}
+
+//Inserindo nome de personagem e fala em forma de String.
+
+const formatarFalas = objetoDaFalaAtual => {
+	return falaFormatada = objetoDaFalaAtual.personagem + " - " + objetoDaFalaAtual.fala
+}
+
+//função para selecionar o objeto na var falas.
+
+const limitesDaFala = (falas, contadora) => {
+	let novaFala = {};
+	for (let atual = 0; atual <= contadora; atual++) {
+		if (atual == contadora)
+			novaFala = falas[atual]
+	}
+	return novaFala
+}
+//Responsável por não permitir que a fala vá alem do que o existente, nem retroceda além.
+
+const controle = (numero, total, limite) => {
+	if (numero === 1) {
+		total += numero
+		if (total > limite.length)
+			total = limite.length
+	}
+	else if (numero < 1) {
+		total = total - 1
+		if (total < 1)
+			total = 1
+	}
+	return total
+}
+
+//função impura que representa o corpo principal do programa.
+
+const corpo = (passe) => {
+    contadora = controle(passe, contadora, falas)
+    let objFala = limitesDaFala(falas, contadora)
+    passarTexto(formatarFalas(objFala))
+    //-------------------------------------------------------------------
+    if ("cenario" in objFala)
+        document.getElementById("fundo-jogo").src = trocarCenario(objFala)
+    //-------------------------------------------------------------------
+    const posicoes = ["esquerda", "centro", "direita"], atual = 0
+
+    if ("atores" in objFala)
+        mostrarPersonagem(posicoes, objFala.atores, atual)
+    else {
+        let retorno = retornador("atores", contadora, falas)
+        mostrarPersonagem(posicoes, retorno.atores, atual)
+    }
+    //--------------------------------------------------------------------
+    if ("emocao" in objFala)
+        mostrarEmocao(posicoes, objFala.emocao, atual)
+    else { 
+        let retorno = retornador("emocao", contadora, falas)
+        mostrarEmocao(posicoes, retorno.emocao, atual)      
+    }
+}
+
+const trocarTela = x => {
+	document.getElementById("menu").style.display = "none"
+    document.getElementById("jogando").style.display = "block"
+    corpo();
+}

@@ -18,7 +18,7 @@
                 <img src = "_imagens/_background/menu-foto.jpg" id = "fundo-menu" alt= "foto do menu"/>
                 <h1 id = "titulo-do-menu">Lídia Engine</h1>
                 <button id = "continuar" onclick = "continuar()">Continuar</button>
-                <button id = "botao-iniciar" onclick = "iniciarOuVoltar(true)">Iniciar</button>
+                <button id = "botao-iniciar" onclick = "trocarTela()">Iniciar</button>
             </section>
     <!-- - - - - - - Aqui é a parte onde o jogo inicia - - - - - - - - -->
             <section id = "jogando">
@@ -32,8 +32,8 @@
                 <section>
                     <div id = "caixa-de-textos">
                         <p id = "falas">Precione proximo para começar</p>
-                        <button onclick = "trocaDeFalas(1)" id = "botao-avancar">Avançar</button>
-                        <button onclick = "trocaDeFalas(0)" id = "botao-voltar">Voltar</button>
+                        <button onclick = "corpo(1)" id = "botao-avancar">Avançar</button>
+                        <button onclick = "corpo(0)" id = "botao-voltar">Voltar</button>
                     </div>
                 </section>
     <!-- - - - - - - Menu de ferramentas contendo o botão salvar e sair - - - - - - -->
@@ -45,7 +45,7 @@
                 </div>	
             </section>
         </div>
-        <script src = "_javascript/var.js"></script>
-        <script src = "_javascript/script.js"></script>
+        <script src = "src/var.js"></script>
+        <script src = "src/script.js"></script>
     </body>
 </html>
