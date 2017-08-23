@@ -38,7 +38,7 @@ const alinhar = (direcao, posEmo, atual, local, slot) => {
 }
 
 //Tentando deixar mostrar imagem pura
-//O erro consiste nesta função e pode ser várias coisas, entre elas um erro de closures ou mesmo algum nome de var errado.
+
 const mostrarEmocao = (posicoes, nome, atual, posEmo) => {
     let local = atual + atual
     let sentimento = document.getElementById("emocao-" + posicoes[atual])
@@ -58,7 +58,7 @@ const mostrarEmocao = (posicoes, nome, atual, posEmo) => {
 const mostrarPersonagem = (posicoes, personagem, unico) => {
     let local = unico + unico
     let ordem = document.getElementById(posicoes[unico])
-    if (unico == posicoes.length - 1)
+    if (unico > posicoes.length - 1)
         return null
     if (personagem[unico] != "") {
         /*alinhar(nome, posicoes, atual, local, "")*/
@@ -129,8 +129,8 @@ const limitesDaFala = (falas, contadora) => {
 const controle = (numero, total, limite) => {
 	if (numero === 1) {
 		total += numero
-		if (total > limite.length)
-			total = limite.length
+		if (total == limite.length)
+			total = limite.length -1
 	}
 	else if (numero < 1) {
 		total = total - 1
