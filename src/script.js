@@ -1,74 +1,73 @@
-   
- /* - - - função referente ao carregamento do jogo. Ela 
- impede que o jogo inicie antes do computador processar todo o código - - - */
-    const fimDoCarregamento = x => {
-        document.getElementById("carregamento").style.display = "none";
-    }
+ //função referente ao carregamento do jogo.
 
-/* - - - Aqui é referente ao menu inicial do jogo. Caso o jogador pressione iniciar,
- a section deixará de  ser exibida, e a outra section referente a reprodução do game,
-  que antes não estava sendo exibida, será mostrada. - - -*/
+const fimDoCarregamento = x =>
+    document.getElementById("carregamento").style.display = "none";
 
-    const iniciarOuVoltar = (iniciar) => {
-        if (iniciar == true) {
-            trocaDeFalas(contadora)
-            document.getElementById("menu").style.display = "none"
-            document.getElementById("jogando").style.display = "block"
-        }
-        else {
-            contadora = 0
-            const confirmacao = confirm("Tem certeza que deseja sair?")
-            if (confirmacao == true) {
-                document.getElementById("jogando").style.display = "none"
-                document.getElementById("menu").style.display = "block"
-            }
-        }
+//funções para sair ou entrar no jogo
+
+const fechar = (sair) => {
+    const confirmacao = confirm("Tem certeza que deseja sair?")
+    if (confirmacao == true) {
+        document.getElementById("jogando").style.display = "none"
+        document.getElementById("menu").style.display = "block"
     }
-//atual e local para indireitar
+    contadora = 0   
+}
+
+const entrar = x => {
+    document.getElementById("menu").style.display = "none"
+    document.getElementById("jogando").style.display = "block"
+    corpo();
+}
+
 /*if (posicaoDaEmocao != undefined)tipoDoRetorno = posicaoDaEmocao*/
 
-const alinhar = (direcao, posicoes, atual, local, slot) => {
-    let alinhando = document.getElementById(slot + posicoes[atual]) 
-    for (let emocao = local; emocao < direcao.length - 1; emocao++) {
-        if (emocao % 2 == 0)
-            alinhando.style.top = direcao[emocao];
+const alinhar = (direcao, posEmo, atual, local, slot) => {
+    let alinhando = document.getElementById(slot + direcao[atual]) 
+    if (local < 0) local = 0;
+    let a = 1;
+    for (let abb = local; abb < posEmo.length - 1; abb++) {
+        if (abb % 2 == 0) {
+            alinhando.style.top = posEmo[abb];
+        }
         else {
-            alinhando.style.left = direcao[emocaol];
+            alinhando.style.left = posEmo[abb]
             break
         }
     }
 }
 
 //Tentando deixar mostrar imagem pura
-
-const mostrarEmocao = (posicoes, nome, atual) => {
-    const local = atual + atual
+//O erro consiste nesta função e pode ser várias coisas, entre elas um erro de closures ou mesmo algum nome de var errado.
+const mostrarEmocao = (posicoes, nome, atual, posEmo) => {
+    let local = atual + atual
     let sentimento = document.getElementById("emocao-" + posicoes[atual])
     if (atual == posicoes.length - 1)
         return null
+    //nome[atual] != "" ? sentimento.src = "_imagens/" + nome[atual] : sentimento.src = ""
     if (nome[atual] != "") {
-        alinhar(nome, posicoes, atual, local, "emocao-")
+        alinhar(posicoes, posEmo, atual, local, "emocao-")
         sentimento.src = "_imagens/" + nome[atual]
     }
     else
         sentimento.src = ""
     if (atual < posicoes.length - 1)
-        return mostrarPersonagem(posicoes, nome, atual+1)
-}
+        return mostrarEmocao(posicoes, nome, atual+1, posEmo)
+}   
 
-const mostrarPersonagem = (posicoes, nome, atual) => {
-    const local = atual + atual
-    let personagem = document.getElementById(posicoes[atual])
-    if (atual == posicoes.length - 1)
+const mostrarPersonagem = (posicoes, personagem, unico) => {
+    let local = unico + unico
+    let ordem = document.getElementById(posicoes[unico])
+    if (unico == posicoes.length - 1)
         return null
-    if (nome[atual] != "") {
-        alinhar(nome, posicoes, atual, local, "")
-        personagem.src = "_imagens/" + nome[atual]
+    if (personagem[unico] != "") {
+        /*alinhar(nome, posicoes, atual, local, "")*/
+        ordem.src = "_imagens/" + personagem[unico]
     }
     else
-        personagem.src = ""
-    if (atual < posicoes.length - 1)
-        return mostrarPersonagem(posicoes, nome, atual+1)
+        ordem.src = ""
+    if (unico < posicoes.length - 1)
+        return mostrarPersonagem(posicoes, personagem, unico+1)
 }
 
 //Retornar para onde tem o parametro "acao"    
@@ -160,16 +159,11 @@ const corpo = (passe) => {
         mostrarPersonagem(posicoes, retorno.atores, atual)
     }
     //--------------------------------------------------------------------
-    if ("emocao" in objFala)
-        mostrarEmocao(posicoes, objFala.emocao, atual)
+    if ("emocao" in objFala) {
+        mostrarEmocao(posicoes, objFala.emocao, atual, objFala.posicaoDaEmocao)
+    }
     else { 
         let retorno = retornador("emocao", contadora, falas)
-        mostrarEmocao(posicoes, retorno.emocao, atual)      
+        mostrarEmocao(posicoes, retorno.emocao, atual, retorno.posicaoDaEmocao)      
     }
-}
-
-const trocarTela = x => {
-	document.getElementById("menu").style.display = "none"
-    document.getElementById("jogando").style.display = "block"
-    corpo();
 }
