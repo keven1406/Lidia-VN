@@ -22,40 +22,42 @@ const entrar = x => {
 
 /*if (posicaoDaEmocao != undefined)tipoDoRetorno = posicaoDaEmocao*/
 
-const alinhar = (direcao, posicoes, atual, local, slot) => {
-    let alinhando = document.getElementById(slot + posicoes[atual]) 
-    for (let emocao = local; emocao < direcao.length - 1; emocao++) {
-        if (emocao % 2 == 0)
-            alinhando.style.top = direcao[emocao];
+const alinhar = (direcao, posEmo, atual, local, slot) => {
+    let alinhando = document.getElementById(slot + direcao[atual]) 
+    if (local < 0) local = 0;
+    let a = 1;
+    for (let abb = local; abb < posEmo.length - 1; abb++) {
+        if (abb % 2 == 0) {
+            alinhando.style.top = posEmo[abb];
+        }
         else {
-            alinhando.style.left = direcao[emocaol];
+            alinhando.style.left = posEmo[abb]
             break
         }
     }
 }
 
 //Tentando deixar mostrar imagem pura
-
-const mostrarEmocao = (posicoes, nome, atual) => {
+//O erro consiste nesta função e pode ser várias coisas, entre elas um erro de closures ou mesmo algum nome de var errado.
+const mostrarEmocao = (posicoes, nome, atual, posEmo) => {
     let local = atual + atual
     let sentimento = document.getElementById("emocao-" + posicoes[atual])
-    console.log("aqui entrou")
     if (atual == posicoes.length - 1)
         return null
+    //nome[atual] != "" ? sentimento.src = "_imagens/" + nome[atual] : sentimento.src = ""
     if (nome[atual] != "") {
-        alinhar(nome, posicoes, atual, local, "emocao-")
+        alinhar(posicoes, posEmo, atual, local, "emocao-")
         sentimento.src = "_imagens/" + nome[atual]
     }
     else
         sentimento.src = ""
     if (atual < posicoes.length - 1)
-        return mostrarPersonagem(posicoes, nome, atual+1)
-}
+        return mostrarEmocao(posicoes, nome, atual+1, posEmo)
+}   
 
 const mostrarPersonagem = (posicoes, personagem, unico) => {
-     local = unico + unico
+    let local = unico + unico
     let ordem = document.getElementById(posicoes[unico])
-    console.log(unico, posicoes.length - 1)
     if (unico == posicoes.length - 1)
         return null
     if (personagem[unico] != "") {
@@ -157,10 +159,11 @@ const corpo = (passe) => {
         mostrarPersonagem(posicoes, retorno.atores, atual)
     }
     //--------------------------------------------------------------------
-    if ("emocao" in objFala)
-        mostrarEmocao(objFala.posicaoDaEmocao, objFala.emocao, atual)
+    if ("emocao" in objFala) {
+        mostrarEmocao(posicoes, objFala.emocao, atual, objFala.posicaoDaEmocao)
+    }
     else { 
         let retorno = retornador("emocao", contadora, falas)
-        mostrarEmocao(retorno.posicaoDaEmocao, retorno.emocao, atual)      
+        mostrarEmocao(posicoes, retorno.emocao, atual, retorno.posicaoDaEmocao)      
     }
 }
