@@ -17,9 +17,9 @@ personagem: “sasha”	- Refere-se ao nome do personagem.
 	
 emocao: [“timida.png”, “Normal.png”, “Feliz.png”]	- Refere-se a emoção do personagem. Se for do seu interesse por emoções no rosto do seu personagem, basta colocar essa propriedade com a imagem da expressão do personagem. No array, o primeiro valor refere-se ao personagem que está a direita. O segundo o centro e o terceiro e ultimo, a direita.
 
-posicaoDaEmocao:[“”, “”, “”, “”, “”, “”]	- A posição da emoção é responsável pelo local onde a expressão facial ficará. Dentro dos conchetes podemos notar que existem 6 espaços para colocar valores. Cada espaço corresponde a altura e distancia do objeto. O primeiro espaço se refere a uma posição vertical, enquanto o segundo espaço refere-se a horizontal. Os dois primeiros referem-se a expressão da esquerda, os do meio ao centro e os dois ultimos a direita.
+posicaoDaEmocao:[“”, “”, “”, “”, “”, “”]	- A posição da emoção é responsável pelo local onde a expressão facial ficará. Dentro dos colchetes podemos notar que existem 6 espaços para colocar valores. Cada espaço corresponde a altura e distancia do objeto. O primeiro espaço se refere a uma posição vertical, enquanto o segundo espaço refere-se a horizontal. Os dois primeiros referem-se a expressão da esquerda, os do meio ao centro e os dois ultimos a direita.
 
-atores: [“ana.jpg”, “lidia.jpg”, “sasha.jpg”]	- Dentro desses conchetes podemos colocar até 3 imagens. Essas três imagens correspondem a:
+atores: [“ana.jpg”, “lidia.jpg”, “sasha.jpg”]	- Dentro desses colchetes podemos colocar até 3 imagens. Essas três imagens correspondem a:
 
 Primeira imagem – esquerda;
 Segunda imagem – centro;
