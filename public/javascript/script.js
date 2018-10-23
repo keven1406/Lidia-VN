@@ -44,10 +44,9 @@ const mostrarEmocao = (posicoes, nome, atual, posEmo) => {
     let sentimento = document.getElementById("emocao-" + posicoes[atual])
     if (atual == posicoes.length - 1)
         return null
-    //nome[atual] != "" ? sentimento.src = "_imagens/" + nome[atual] : sentimento.src = ""
     if (nome[atual] != "") {
         alinhar(posicoes, posEmo, atual, local, "emocao-")
-        sentimento.src = "_imagens/" + nome[atual]
+        sentimento.src = "./public/img/" + nome[atual]
     }
     else
         sentimento.src = ""
@@ -62,7 +61,7 @@ const mostrarPersonagem = (posicoes, personagem, unico) => {
         return null
     if (personagem[unico] != "") {
         /*alinhar(nome, posicoes, atual, local, "")*/
-        ordem.src = "_imagens/" + personagem[unico]
+        ordem.src = "./public/img/" + personagem[unico]
     }
     else
         ordem.src = ""
@@ -86,7 +85,7 @@ const retornador = (acao, contadora, falas) => {
 
 const trocarCenario = (falas) => {
     if ("cenario" in falas)
-        return "_imagens/_background/" + falas.cenario
+        return "./public/img/background/" + falas.cenario
 }
 
 /*interrompeFala serve para impedir o bug "Fantasma das letras"
